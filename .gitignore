@@ -1,0 +1,10 @@
+/OnlineShopping/Hosts/API/OnlineShopping.API/bin
+/OnlineShopping/Core/OnlineShopping.Testing/bin
+/OnlineShopping/Core/OnlineShopping.Testing/obj
+/OnlineShopping/Core/OnlineShopping.Models/bin
+/OnlineShopping/Core/OnlineShopping.Models/obj
+/OnlineShopping/.vs/OnlineShopping
+/.vs
+/OnlineShopping/Core/OnlineShopping.DAL/obj/Debug/net5.0
+/OnlineShopping/Core/OnlineShopping.Interfaces/obj/Debug/net5.0
+/OnlineShopping/Core/Tests/OnlineShopping.Core.Tests.Functional/obj/Debug/net5.0
