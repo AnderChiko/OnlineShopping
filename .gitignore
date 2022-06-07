@@ -8,3 +8,13 @@
 /OnlineShopping/Core/OnlineShopping.DAL/obj/Debug/net5.0
 /OnlineShopping/Core/OnlineShopping.Interfaces/obj/Debug/net5.0
 /OnlineShopping/Core/Tests/OnlineShopping.Core.Tests.Functional/obj/Debug/net5.0
+/OnlineShopping/Core/OnlineShopping.Core/bin/Debug/net5.0
+/OnlineShopping/Core/OnlineShopping.Core/obj
+/OnlineShopping/Core/OnlineShopping.DAL/bin/Debug/net5.0
+/OnlineShopping/Core/OnlineShopping.DAL/obj
+/OnlineShopping/Core/OnlineShopping.Interfaces/bin/Debug/net5.0
+/OnlineShopping/Core/OnlineShopping.Interfaces/obj
+/OnlineShopping/Core/Tests/OnlineShopping.Core.Tests.Functional/bin/Debug/net5.0
+/OnlineShopping/Hosts/API/OnlineShopping.API/obj
+/OnlineShopping/Core/Tests/OnlineShopping.Core.Tests.Functional/obj
+/OnlineShopping/Hosts/UI/OnlineShopping.rar
