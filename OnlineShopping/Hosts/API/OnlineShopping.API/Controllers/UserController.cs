@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using OnlineShopping.Core.Interfaces.Logging;
 using OnlineShopping.Interfaces.Data;
 using OnlineShopping.Models.Data;
 using OnlineShopping.Models.Data.Users;
@@ -17,9 +18,9 @@ namespace OnlineShopping.API.Controllers
     {
 
         private readonly IUserManager _userManager;
-        private readonly ILogger<UserController> _logger;
+        private readonly ILoggingManager<UserController> _logger;
 
-        public UserController(IUserManager userManager, ILogger<UserController> logger)
+        public UserController(IUserManager userManager, ILoggingManager<UserController> logger)
         {
             this._userManager = userManager;
             this._logger = logger;

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using OnlineShopping.Core.Interfaces.Logging;
 using OnlineShopping.Interfaces.Services;
 using OnlineShopping.Models.Data;
 using OnlineShopping.Models.Data.Orders;
@@ -17,9 +18,9 @@ namespace OnlineShopping.API.Controllers
     public class OrderController : ControllerBase
     {
         private readonly IOrderManager _orderManager; 
-        private readonly ILogger<OrderController> _logger;
+        private readonly ILoggingManager<OrderController> _logger;
 
-        public OrderController(IOrderManager orderManager, ILogger<OrderController> logger)
+        public OrderController(IOrderManager orderManager, ILoggingManager<OrderController> logger)
         {
             this._orderManager = orderManager;
             this._logger = logger;

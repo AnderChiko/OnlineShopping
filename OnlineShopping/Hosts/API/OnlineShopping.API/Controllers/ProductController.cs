@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using OnlineShopping.Core.Interfaces.Logging;
 using OnlineShopping.Interfaces.Services;
 using OnlineShopping.Models.Data;
 using OnlineShopping.Models.Enums;
@@ -18,8 +19,8 @@ namespace OnlineShopping.API.Controllers
     {
 
         private IProductManager _productManager;
-        private readonly ILogger<ProductController> _logger;
-        public ProductController(IProductManager productManager, ILogger<ProductController> logger)
+        private readonly ILoggingManager<ProductController> _logger;
+        public ProductController(IProductManager productManager, ILoggingManager<ProductController> logger)
         {
             this._productManager = productManager;
             this._logger = logger;

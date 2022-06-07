@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using OnlineShopping.Core.Interfaces.Logging;
 using OnlineShopping.Interfaces.Security;
 using OnlineShopping.Models.Enums;
 using OnlineShopping.Models.Http;
@@ -16,8 +17,8 @@ namespace OnlineShopping.API.Controllers
     public class LoginController : ControllerBase
     {
         private readonly ISecurityManager _securityManager;
-        private readonly ILogger<LoginController> _logger;
-        public LoginController( ISecurityManager securityManager, ILogger<LoginController> logger)
+        private readonly ILoggingManager<LoginController> _logger;
+        public LoginController( ISecurityManager securityManager, ILoggingManager<LoginController> logger)
         {           
             this._securityManager = securityManager;
             this._logger = logger;
