@@ -1,54 +1,56 @@
-<div class="layout-wrapper" [ngClass]="{'p-input-filled': app.inputStyle === 'filled'}">
-  <div class="pages-body login-page p-d-flex p-flex-column">
-    <div class="p-as-center p-mt-auto p-mb-auto">
-      <form (keyup.enter)="login()" #loginForm="ngForm">
-        <div class="pages-panel card p-d-flex p-flex-column">
-          <div class="pages-header p-px-3 p-py-1">
-            <h2>LOGIN</h2>
-          </div>
-          <div class="pages-detail p-mt-4 p-mb-4 p-px-6">Hello. Welcome to <strong>Digital Health Information Systems</strong>.</div>
-          <app-progress-spinner [isLoading]="isLoading"></app-progress-spinner>
-          <div class="p-fluid">
-              <span class="p-input-icon-left p-float-label">
-                <i class="pi pi-user"></i>
-                <input type="text" pInputText [(ngModel)]="username" name="username" required="true" />
-                <label>Username</label>
-              </span>
-<!--             <div class="p-inputgroup p-mt-3 p-mb-2">
-              <span class="p-input-icon-left p-float-label">
-                <i class="pi pi-lock"></i>
-                <input type="password" pPassword  [(ngModel)]="password" name="password" required="true">
-                <label>Password</label>
-              </span>
-            </div> -->
-            <div class="p-mt-3 p-mb-2">
-              <span class="p-input-icon-left p-float-label">
-                <i class="pi pi-lock"></i>
-                <p-password [(ngModel)]="password" name="password" required="true" [toggleMask]="true" [feedback]="false">
-                </p-password>
-                <label>Password</label>
-              </span>
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card">
+      <div class="card-header bg-secondary">
+        <h3 class="text-light">Login</h3>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="card-body">
+          <div class="mx-4 my-2">
+            <div class="form-group">
+              <label for="emailaddress">Emailaddress</label>
+              <input type="email" formControlName="emailaddress" class="form-control form-control-sm"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                [ngClass]="{ 'is-invalid': submitted && f.emailaddress.errors }" />
+              <div *ngIf="submitted && f.emailaddress.errors" class="invalid-feedback">
+
+                <div *ngIf="f.emailaddress.errors && (f.emailaddress.dirty && f.emailaddress.touched)"
+                  class="alert-email alert-danger-email"><br>
+
+                  <div [hidden]="!f.emailaddress.errors['pattern']">
+                    Please input a valid email.
+                  </div>
+                  <div [hidden]="!f.emailaddress.errors['required']">
+                    Email is required
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" formControlName="password" class="form-control form-control-sm"
+                  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col text-right">
+                  <button mat-stroked-button class="btn btn-secondary btn-fixed">Login</button>
+                  <button mat-stroked-button [routerLink]="'/register'"
+                    class="btn btn-danger btn-fixed ml-2">Register</button>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="p-mt-3 p-mb-2 p-px-3 login-button" >
-            <button pButton class="p-mb-2 p-px-3" type="submit" label="LOGIN" (click)="login()"
-              [disabled]="loginForm.invalid"></button>
-          </div>
-          <div class="p-mb-6 p-px-3">
-            <button pbutton="" pripple="" (click)="forgotPasswordNav()" type="button" label="Forgot Password?" class="p-button-text p-ripple p-button p-component" tabindex="0">
-              <span class="p-button-label">Forgot Password?</span>
-              <span class="p-ink"></span>
-            </button>
-            <!-- <li class="">
-              <a class="p-d-flex p-dir-row p-jc-center p-ai-center p-px-2 rounded-circle"
-                (click)="forgotPasswordNav()" pRipple>
-                Forgot Password
-                <i class="pi pi-user pi-fw"></i>
-              </a>
-            </li> -->
           </div>
         </div>
       </form>
     </div>
   </div>
+</div>
+<div class="my-container">
+  <ng-template #customLoadingTemplate>
+    <div class="custom-class">
+    </div>
+  </ng-template>
+  <ngx-loading [show]="loading" [template]="customLoadingTemplate"></ngx-loading>
 </div>

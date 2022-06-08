@@ -7,25 +7,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{A5B76B80
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{DD76CAF2-D025-462F-BD03-97119593A2FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShopping.API", "Hosts\API\OnlineShopping.API\OnlineShopping.API.csproj", "{FDEF4AD6-C23A-476D-8E43-CC2599065A29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShopping.API", "Hosts\API\OnlineShopping.API\OnlineShopping.API.csproj", "{FDEF4AD6-C23A-476D-8E43-CC2599065A29}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{8073BEB6-25C1-4A91-BF2E-9DE342C63B96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShopping.Core", "Core\OnlineShopping.Core\OnlineShopping.Core.csproj", "{52B29D89-4B3F-4166-AE0D-B40D0AAE6DD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShopping.Core", "Core\OnlineShopping.Core\OnlineShopping.Core.csproj", "{52B29D89-4B3F-4166-AE0D-B40D0AAE6DD7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{F4E5ED94-2646-437C-89C1-34F0B43FF38B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShopping.Models", "Core\OnlineShopping.Models\OnlineShopping.Models.csproj", "{6247E36F-040A-4D3D-88D6-9C4FAF170644}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShopping.Models", "Core\OnlineShopping.Models\OnlineShopping.Models.csproj", "{6247E36F-040A-4D3D-88D6-9C4FAF170644}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{13C2E663-71F7-4C24-93E1-4C6EC140F82A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShopping.DAL", "Core\OnlineShopping.DAL\OnlineShopping.DAL.csproj", "{0A8240CC-A271-4895-A67A-89F5C11D4637}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShopping.DAL", "Core\OnlineShopping.DAL\OnlineShopping.DAL.csproj", "{0A8240CC-A271-4895-A67A-89F5C11D4637}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShopping.Interfaces", "Core\OnlineShopping.Interfaces\OnlineShopping.Interfaces.csproj", "{FDF39C30-7B31-4157-B7F1-8BF1A1EA2FC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShopping.Interfaces", "Core\OnlineShopping.Interfaces\OnlineShopping.Interfaces.csproj", "{FDF39C30-7B31-4157-B7F1-8BF1A1EA2FC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShopping.Core.Tests.Functional", "Core\Tests\OnlineShopping.Core.Tests.Functional\OnlineShopping.Core.Tests.Functional.csproj", "{B5AC6152-26A2-42C7-BD02-06FA3D7AB899}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShopping.Core.Tests.Functional", "Core\Tests\OnlineShopping.Core.Tests.Functional\OnlineShopping.Core.Tests.Functional.csproj", "{B5AC6152-26A2-42C7-BD02-06FA3D7AB899}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShopping.Testing", "Core\OnlineShopping.Testing\OnlineShopping.Testing.csproj", "{91CB2394-0A3D-40D9-BEAB-FE8B2BC0B07A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShopping.Testing", "Core\OnlineShopping.Testing\OnlineShopping.Testing.csproj", "{91CB2394-0A3D-40D9-BEAB-FE8B2BC0B07A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{A7FB2005-03E9-4280-87F2-7CA1E236C3AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

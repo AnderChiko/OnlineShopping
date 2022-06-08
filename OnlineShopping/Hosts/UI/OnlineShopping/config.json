@@ -1,0 +1,7 @@
+{
+    "apiBaseUrl": "http://172.18.33.96:57773/csa",
+    "defaultErrorMessage": "A server error occured, please contact your administrator",
+    "loginTimeoutMilliseconds": 20000,
+    "unauthenticatedUser":"anderson",
+    "unauthenticatedPassword":"Password1"
+}

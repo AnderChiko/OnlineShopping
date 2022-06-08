@@ -18,3 +18,5 @@
 /OnlineShopping/Hosts/API/OnlineShopping.API/obj
 /OnlineShopping/Core/Tests/OnlineShopping.Core.Tests.Functional/obj
 /OnlineShopping/Hosts/UI/OnlineShopping.rar
+/OnlineShopping/Hosts/UI/OnlineShopping/.vs
+/OnlineShopping/Hosts/UI/OnlineShopping/.vscode

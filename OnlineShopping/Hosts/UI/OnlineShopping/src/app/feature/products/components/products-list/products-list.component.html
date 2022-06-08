@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="card-header bg-secondary">
+    <h3 class="text-light">Products List</h3>
+  </div>
+  <div class="card-body">
+    <div class="mx-4 my-2">
+      <div class="form-row border rounded table-responsive-sm">
+        <table class="table table-borderless table-hover">
+          <tbody>
+            <tr *ngIf="productList.length == 0">
+              <td colspan="3">No data to display</td>
+            </tr>
+            <tr class="border-bottom"
+              *ngFor="let product of productList | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
+              <td><img src={{product.imageUrl}} /></td>
+              <td>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h6>{{product.name}}</h6>
+                  </div>
+                  <div class="col-md-12">
+                    <h2>{{product.description}}</h2>
+                  </div>
+                  <div class="col-md-12">
+                    <h3>{{product.price}}</h3>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <input type="button" name="addToCart" (click)="addToCart(product,1)">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <ngb-pagination class="pl-1" [collectionSize]="productList.length" [(page)]="page" [maxSize]="5"
+          *ngIf="productList.length > pageSize" [pageSize]="pageSize" [rotate]="true" [ellipses]="false"
+          [boundaryLinks]="true"></ngb-pagination>
+      </div>
+      <div class="form-row">
+        <div class="col text-right">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="my-container">
+  <ng-template #customLoadingTemplate>
+    <div class="custom-class">
+    </div>
+  </ng-template>
+  <ngx-loading [show]="loading" [template]="customLoadingTemplate"></ngx-loading>
+</div>

@@ -1,52 +1,84 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+//angula
 
-import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularMaterialModule } from './angular-material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { DatePipe, APP_BASE_HREF, HashLocationStrategy, LocationStrategy, Location, PathLocationStrategy } from '@angular/common'
+
+// 3rd party
+import { ToastrModule } from 'ngx-toastr';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
+import { NgbModule, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; // this includes the core NgIdleModule but includes keepalive providers for easy wireup
+import { MomentModule } from 'angular2-moment'; // optional, provides moment-style pipes for date formatting
+
+//components
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './feature/product/components/product-list/product-list.component';
-import { ProductDetailComponent } from './feature/product/components/product-detail/product-detail.component';
-import { StoreModule } from '@ngrx/store';
-import { appReducers } from './app-reducers';
-import { UserLoginComponent } from './feature/users/components/user-login/user-login.component';
-import { UserRegisterComponent } from './feature/users/components/user-register/user-register.component';
-import { AppInputComponent } from './shared/components/app-input/app-input.component';
-import { AppButtonComponent } from './shared/components/app-button/app-button.component';
-import { AppDropdownComponent } from './shared/components/app-dropdown/app-dropdown.component';
-import { AppCheckBoxComponent } from './shared/components/app-check-box/app-check-box.component';
-import { AppCheckboxComponent } from './shared/components/app-checkbox/app-checkbox.component';
-import { AppCalenderComponent } from './shared/components/app-calender/app-calender.component';
-import { AppPasswordComponent } from './shared/components/app-password/app-password.component';
-import { AppMultselectComponent } from './shared/components/app-multselect/app-multselect.component';
-import { AppRadiobuttonComponent } from './shared/components/app-radiobutton/app-radiobutton.component';
-import { AppTableComponent } from './shared/components/app-table/app-table.component';
-import { AppMessageComponent } from './shared/components/app-message/app-message.component';
+import { AppRoutingModule } from './app-routing.module';
+
+//seivices
+import { UserRegisterComponent } from './feature/user/components/user-register/user-register.component';
+import { LoginComponent } from './feature/login/components/login/login.component';
+import { AppConfigService } from './Shared/services';
+import { ProductsListComponent } from './feature/products/components/products-list/products-list.component';
+import { ViewOrderCartComponent } from './feature/orders/components/view-order-cart/view-order-cart.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent,
-    ProductDetailComponent,
-    UserLoginComponent,
+    LoginComponent,
     UserRegisterComponent,
-    AppInputComponent,
-    AppButtonComponent,
-    AppDropdownComponent,
-    AppCheckBoxComponent,
-    AppCheckboxComponent,
-    AppCalenderComponent,
-    AppPasswordComponent,
-    AppMultselectComponent,
-    AppRadiobuttonComponent,
-    AppTableComponent,
-    AppMessageComponent
+    ProductsListComponent,
+    ViewOrderCartComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot(appReducers),
-    //StoreModule.forRoot({ product: addProductReducer })
+    BrowserAnimationsModule,
+    AngularMaterialModule,
+    FormsModule,
+    NgbModule,
+    ModalModule.forRoot(),
+    NgIdleKeepaliveModule.forRoot(),
+    MomentModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right'
+    }),
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.threeBounce,
+      backdropBackgroundColour: 'rgba(0,0,0,0)',
+      fullScreenBackdrop: true,
+      primaryColour: '#007bff', //1287fc
+      secondaryColour: '#007bff',
+      tertiaryColour: '#007bff'
+    })
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    DatePipe, Location
+    , { provide: LocationStrategy, useClass: PathLocationStrategy }
+
+    , {
+      provide: APP_INITIALIZER
+      , multi: true
+      , deps: [AppConfigService]
+      , useFactory: (appConfigService: AppConfigService) => {
+        return () => {
+          return appConfigService.loadAppConfig();
+        }
+      }
+    }
+  ],
+  entryComponents: [],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule {
+}
