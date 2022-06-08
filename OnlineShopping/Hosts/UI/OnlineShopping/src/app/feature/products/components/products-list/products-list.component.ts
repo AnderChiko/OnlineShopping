@@ -28,6 +28,13 @@ export class ProductsListComponent implements OnInit {
   public page: number = 1;
   public pageSize: number = 5;
 
+  prodLists: Product[] = [
+    { id: 1, name: 'Test product 1', description: 'Test product description 1', dateCreated: null, isActive: true, isDeleted: false, imageUrl: '', price: 12.00 }
+    , { id: 2, name: 'Test product 2', description: 'Test product description 2', dateCreated: null, isActive: true, isDeleted: false, imageUrl: '', price: 25.00 }
+    , { id: 3, name: 'Test product 3', description: 'Test product description 3', dateCreated: null, isActive: true, isDeleted: false, imageUrl: '', price: 75.00 }
+    , { id: 4, name: 'Test product 4', description: 'Test product description 4', dateCreated: null, isActive: true, isDeleted: false, imageUrl: '', price: 100.00 }
+  ]
+
   constructor(private toastr: ToastrService
     , private productService: ProductService
     , private cartService: CartService
@@ -42,8 +49,8 @@ export class ProductsListComponent implements OnInit {
   }
 
   public loadProducts() {
-    this.productList = [];
-    this.loading = true;
+    this.productList = this.prodLists;
+    // this.loading = true;
 
     this.productService.getProducts().subscribe(
       (response) => {
@@ -55,10 +62,18 @@ export class ProductsListComponent implements OnInit {
         }
         this.loading = false;
         this.productList = response.responseObject;
+      },
+      error => { },
+      () => {
+
+        this.toastr.error("internal server error.", "Error");
+        this.loading = false;
+        return;
+
       });
   }
 
   public addToCart(prod: Product, qty: number) {
-    this.cartService.addOrderItem(new OrderItems(prod.id, prod.price, qty));
+    this.cartService.addOrderItem(new OrderItems(prod, qty));
   }
 }

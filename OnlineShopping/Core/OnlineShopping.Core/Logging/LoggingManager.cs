@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using ShoppingCart.Core.Interfaces.Logging;
+using OnlineShopping.Core.Interfaces.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;

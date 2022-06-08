@@ -12,7 +12,7 @@ export class UserService {
   constructor(private apiService: ApiService) { }
 
   public register(user: User): Observable<UserRegisterResponse> {
-    return this.apiService.POST("/api/user/register", user);
+    return this.apiService.POST("api/user/register", user);
   }
 
 }
