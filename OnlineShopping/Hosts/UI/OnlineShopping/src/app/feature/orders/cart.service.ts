@@ -39,10 +39,7 @@ export class CartService {
       thisOrder = new Order(this.currentUser);
 
     //group items
-
     var objIndex = thisOrder.orderItems.findIndex(x => x.productId == item.product.id);
-    console.log('objIndex', objIndex)
-    console.log('itemsCount', itemsCount)
     if (objIndex >= 0) {
       var itemsCount = thisOrder.orderItems.find(x => x.productId == item.product.id);
       //increament

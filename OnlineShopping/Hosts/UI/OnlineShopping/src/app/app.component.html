@@ -12,8 +12,8 @@
         [routerLinkActiveOptions]="{exact: true}">Home</a>
       <a class="nav-item nav-link" routerLink="/login">login</a>
     </div>
-    <a *ngIf="getOrderItemsCount() > 0" class="nav-item nav-link" routerLink="/viewordercart"> order Items:
-      ({{getOrderItemsCount()}})</a>
+    <a *ngIf="cartService.getOrderItemsCount() > 0" class="nav-item nav-link" routerLink="/viewordercart"> order Items:
+      ({{cartService.getOrderItemsCount()}})</a>
   </nav>
 </header>
 

@@ -26,13 +26,6 @@ export class AppComponent {
     this.cartService.currentOrder.subscribe(x => this.order);
   }
 
-  getOrderItemsCount() {
-    if (this.cartService.userOrderValue == null)
-      return 0;
-    console.log('this.cartService.userOrderValue',)
-    return this.cartService.userOrderValue.orderItems.length;
-  }
-
   logout() {
     this.authService.logout();
   }
