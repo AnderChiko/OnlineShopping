@@ -28,8 +28,11 @@ export class CartService {
     this.authService.user.subscribe(x => this.currentUser = x);
   }
 
-  public addOrderItem(item: OrderItems) {
+  public get userOrderValue(): Order {
+    return this.currentOrderSubject.value;
+  }
 
+  public addOrderItem(item: OrderItems) {
 
     let thisOrder = this.localStorageService.getCurrentOrder();
     if (thisOrder)
@@ -40,5 +43,11 @@ export class CartService {
     this.currentOrder = this.currentOrderSubject.asObservable();
 
   }
+
+  public clearOrder() {
+    this.localStorageService.setCurrentOrder(null);
+    this.currentOrder = this.currentOrderSubject.asObservable();
+  }
+
 
 }

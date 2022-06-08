@@ -13,7 +13,7 @@ export class OrderService {
 
   constructor(private apiService: ApiService) { }
 
-  public register(order: Order): Observable<OrderApiResponse> {
+  public placeOrder(order: Order): Observable<OrderApiResponse> {
     return this.apiService.POST("/api/order/Place", order);
   }
 

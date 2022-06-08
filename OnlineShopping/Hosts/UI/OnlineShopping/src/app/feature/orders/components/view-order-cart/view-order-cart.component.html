@@ -1,1 +1,41 @@
-<p>view-order-cart works!</p>
+<div class="card">
+  <div class="card-header bg-secondary">
+    <h3 class="text-light">Products List</h3>
+  </div>
+  <div class="card-body">
+    <div class="mx-4 my-2">
+      <div class="form-row border rounded table-responsive-sm">
+        <table class="table table-borderless table-hover">
+          <tbody>
+            <tr *ngIf="userOrder.oderItems.length == 0">
+              <td colspan="3">No data to display</td>
+            </tr>
+            <tr class="border-bottom"
+              *ngFor="let item of userOrder.oderItems | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
+              <td>{{item.quantity}} </td>
+              <td>{{item.product.name}} </td>
+              <td>{{item.product.price}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <ngb-pagination class="pl-1" [collectionSize]="userOrder.oderItems.length" [(page)]="page" [maxSize]="5"
+          *ngIf="userOrder.oderItems.length > pageSize" [pageSize]="pageSize" [rotate]="true" [ellipses]="false"
+          [boundaryLinks]="true"></ngb-pagination>
+      </div>
+      <div class="form-row">
+        <div class="col text-right">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="my-container">
+  <ng-template #customLoadingTemplate>
+    <div class="custom-class">
+    </div>
+  </ng-template>
+  <ngx-loading [show]="loading" [template]="customLoadingTemplate"></ngx-loading>
+</div>

@@ -28,7 +28,7 @@ export class AuthService {
 
   public logout() {
     // remove user from local storage and set current user to null
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('User');
     this.localStorageService.setUserDetails(null);
     this.currentUserSubject.next(null);
     this.routerService.navigate(['home']);
@@ -36,7 +36,7 @@ export class AuthService {
 
   public GotoLogin() {
     // remove user from local storage and set current user to null
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('User');
     this.localStorageService.setUserDetails(null);
     this.currentUserSubject.next(null);
     this.routerService.navigate(['login']);

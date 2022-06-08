@@ -28,19 +28,16 @@ export class ProductsListComponent implements OnInit {
   public page: number = 1;
   public pageSize: number = 5;
 
-  constructor(private _formBuilder: FormBuilder
-    , private toastr: ToastrService
+  constructor(private toastr: ToastrService
     , private productService: ProductService
-
-    , private routerService: Router
-    , private localStorageService: LocalStorageService
     , private cartService: CartService
   ) {
 
   }
 
   ngOnInit() {
-    this.productList = [];
+
+    this.loadProducts();
 
   }
 

@@ -1,3 +1,5 @@
+import { Product } from "../../products/models/product.model";
+
 export interface IOrderItems {
   id?: number;
   orderId?: number;
@@ -6,6 +8,7 @@ export interface IOrderItems {
   quantity?: number;
   vat?: number;
   price?: number;
+  product?: Product;
 }
 
 
@@ -17,11 +20,13 @@ export class OrderItems implements IOrderItems {
   quantity?: number;
   vat?: number;
   price?: number;
+  product?: Product;
 
-  constructor(productId: number, unitPrice: number, quantity: number) {
-    productId = productId;
-    unitPrice = unitPrice;
-    quantity = quantity;
+  constructor(_product: Product, _quantity?: number) {
+    this.productId = _product.id;
+    this.product.name = _product.name;
+    this.unitPrice = _product.price;
+    this.quantity = _quantity;
   }
 
 }
