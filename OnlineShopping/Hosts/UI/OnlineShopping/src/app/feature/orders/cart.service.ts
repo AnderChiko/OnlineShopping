@@ -61,5 +61,12 @@ export class CartService {
     this.currentOrder = this.currentOrderSubject.asObservable();
   }
 
+  getOrderItemsCount() {
+    let thisOrder = JSON.parse(this.localStorageService.getCurrentOrder());
+    if (thisOrder == null)
+      thisOrder = new Order(this.currentUser);
+
+    return thisOrder.orderItems.length;
+  }
 
 }

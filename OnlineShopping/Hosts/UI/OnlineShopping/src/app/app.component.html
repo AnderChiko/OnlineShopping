@@ -4,7 +4,7 @@
     <div class="navbar-nav" *ngIf="user">
 
       <a class="nav-item nav-link">{{user.emailaddress}}</a>
-      order Items: {{order.oderItems.length}}
+
       <a class="nav-item nav-link" (click)="logout()">Logout</a>
     </div>
     <div class="navbar-nav">
@@ -12,6 +12,8 @@
         [routerLinkActiveOptions]="{exact: true}">Home</a>
       <a class="nav-item nav-link" routerLink="/login">login</a>
     </div>
+    <a *ngIf="getOrderItemsCount() > 0" class="nav-item nav-link" routerLink="/viewordercart"> order Items:
+      ({{getOrderItemsCount()}})</a>
   </nav>
 </header>
 
