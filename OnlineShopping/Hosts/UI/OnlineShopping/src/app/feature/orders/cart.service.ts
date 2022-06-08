@@ -29,7 +29,7 @@ export class CartService {
   }
 
   public get userOrderValue(): Order {
-    return this.currentOrderSubject.value;
+    return JSON.parse(this.localStorageService.getCurrentOrder());
   }
 
   public addOrderItem(item: OrderItems) {
@@ -60,7 +60,6 @@ export class CartService {
 
   getOrderItemsCount(): number {
     let thisOrder = JSON.parse(this.localStorageService.getCurrentOrder());
-    console.log('thisOrder', thisOrder)
     if (thisOrder == null)
       return 0;
 
@@ -71,8 +70,9 @@ export class CartService {
     let thisOrder = JSON.parse(this.localStorageService.getCurrentOrder());
     var total = 0;
     for (var i = 0; i < thisOrder.orderItems.length; i++) {
-      total += (thisOrder.orderItems[i].quantity * thisOrder.orderItems[i].price);
+      total += (thisOrder.orderItems[i].quantity * thisOrder.orderItems[i].product.price);
     }
+
     return total;
   }
 

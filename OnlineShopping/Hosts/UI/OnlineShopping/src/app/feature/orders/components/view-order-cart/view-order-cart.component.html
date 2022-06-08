@@ -29,7 +29,7 @@
           <tfoot *ngIf="cartService.getOrderItemsCount()  > 0">
             <tr class="border-bottom">
               <th colspan="3">Total price</th>
-              <th class="text-right">{{ cartService.totalOrderPrice()}}</th>
+              <th class="text-right">R {{ cartService.totalOrderPrice() | number : '1.2-2'}}</th>
             </tr>
           </tfoot>
         </table>
