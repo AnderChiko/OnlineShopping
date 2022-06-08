@@ -31,10 +31,13 @@ export class ViewOrderCartComponent implements OnInit {
     , private cartService: CartService
     , private orderService: OrderService
   ) {
+
     this.cartService.currentOrder.subscribe(x => this.userOrder);
   }
 
   ngOnInit() {
+
+    this.userOrder = this.cartService.userOrderValue;
 
   }
 

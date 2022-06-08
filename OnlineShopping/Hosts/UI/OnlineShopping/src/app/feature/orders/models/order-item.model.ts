@@ -24,7 +24,7 @@ export class OrderItems implements IOrderItems {
 
   constructor(_product: Product, _quantity?: number) {
     this.productId = _product.id;
-    this.product.name = _product.name;
+    this.product = _product;
     this.unitPrice = _product.price;
     this.quantity = _quantity;
   }

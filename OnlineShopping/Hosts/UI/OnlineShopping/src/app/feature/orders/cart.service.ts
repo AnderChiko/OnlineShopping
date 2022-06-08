@@ -34,11 +34,23 @@ export class CartService {
 
   public addOrderItem(item: OrderItems) {
 
-    let thisOrder = this.localStorageService.getCurrentOrder();
-    if (thisOrder)
-      thisOrder = new Order(0, this.currentUser.emailaddress);
+    let thisOrder = JSON.parse(this.localStorageService.getCurrentOrder());
+    if (thisOrder == null)
+      thisOrder = new Order(this.currentUser);
 
-    thisOrder.orderItem.push(item);
+    //group items
+
+    var objIndex = thisOrder.orderItems.findIndex(x => x.productId == item.product.id);
+    console.log('objIndex', objIndex)
+    console.log('itemsCount', itemsCount)
+    if (objIndex >= 0) {
+      var itemsCount = thisOrder.orderItems.find(x => x.productId == item.product.id);
+      //increament
+      thisOrder.orderItems[objIndex].quantity = itemsCount.quantity + item.quantity;
+    }
+    else
+      thisOrder.orderItems.push(item);
+
     this.localStorageService.setCurrentOrder(thisOrder);
     this.currentOrder = this.currentOrderSubject.asObservable();
 

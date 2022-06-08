@@ -14,7 +14,7 @@ export class OrderService {
   constructor(private apiService: ApiService) { }
 
   public placeOrder(order: Order): Observable<OrderApiResponse> {
-    return this.apiService.POST("/api/order/Place", order);
+    return this.apiService.POST("api/order/Place", order);
   }
 
 }

@@ -31,7 +31,7 @@ export class LocalStorageService {
 
   public setCurrentOrder(value) {
     let key = 'p=lx_trl/ls';
-    localStorage.setItem(key, this.storageService.encrypt(value));
+    localStorage.setItem(key, this.storageService.encrypt(JSON.stringify(value)));
   }
 
   public getCurrentOrder() {
