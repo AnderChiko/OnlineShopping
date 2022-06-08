@@ -28,7 +28,7 @@ export class ViewOrderCartComponent implements OnInit {
     , private toastr: ToastrService
     , private routerService: Router
     , private localStorageService: LocalStorageService
-    , private cartService: CartService
+    , public cartService: CartService
     , private orderService: OrderService
   ) {
 
@@ -40,6 +40,8 @@ export class ViewOrderCartComponent implements OnInit {
     this.userOrder = this.cartService.userOrderValue;
 
   }
+
+
 
   public placeOrder() {
 

@@ -6,17 +6,32 @@
     <div class="mx-4 my-2">
       <div class="form-row border rounded table-responsive-sm">
         <table class="table table-borderless table-hover">
+          <thead>
+            <tr class="border-bottom">
+              <th>quantity</th>
+              <th>product name</th>
+              <th>unit price</th>
+              <th>line price</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr *ngIf="userOrder.orderItems.length == 0">
-              <td colspan="3">No data to display</td>
+            <tr *ngIf="cartService.getOrderItemsCount()  == 0">
+              <td colspan="4">No data to display</td>
             </tr>
             <tr class="border-bottom"
               *ngFor="let item of userOrder.orderItems | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
               <td>{{item.quantity}} </td>
               <td>{{item.product.name}} </td>
-              <td>{{item.product.price}}</td>
+              <td>{{item.product.price}} </td>
+              <td class="text-right">R {{(item.product.price * item.quantity) | number : '1.2-2'}}</td>
             </tr>
           </tbody>
+          <tfoot *ngIf="cartService.getOrderItemsCount()  > 0">
+            <tr class="border-bottom">
+              <th colspan="3">Total price</th>
+              <th class="text-right">{{ cartService.totalOrderPrice()}}</th>
+            </tr>
+          </tfoot>
         </table>
         <ngb-pagination class="pl-1" [collectionSize]="userOrder.orderItems.length" [(page)]="page" [maxSize]="5"
           *ngIf="userOrder.orderItems.length > pageSize" [pageSize]="pageSize" [rotate]="true" [ellipses]="false"

@@ -58,12 +58,23 @@ export class CartService {
     this.currentOrder = this.currentOrderSubject.asObservable();
   }
 
-  getOrderItemsCount() {
+  getOrderItemsCount(): number {
     let thisOrder = JSON.parse(this.localStorageService.getCurrentOrder());
+    console.log('thisOrder', thisOrder)
     if (thisOrder == null)
-      thisOrder = new Order(this.currentUser);
+      return 0;
 
     return thisOrder.orderItems.length;
   }
+
+  totalOrderPrice(): number {
+    let thisOrder = JSON.parse(this.localStorageService.getCurrentOrder());
+    var total = 0;
+    for (var i = 0; i < thisOrder.orderItems.length; i++) {
+      total += (thisOrder.orderItems[i].quantity * thisOrder.orderItems[i].price);
+    }
+    return total;
+  }
+
 
 }
