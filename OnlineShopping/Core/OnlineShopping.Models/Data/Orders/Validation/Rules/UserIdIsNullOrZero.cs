@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OnlineShopping.Models.Data.Orders.Validation.Rules
 {
-    internal class UserIdIsNullOrEmpty : ISpecification<Order>
+    internal class UserIdIsNullOrZero : ISpecification<Order>
     {
         public bool IsSatisfiedBy(Order entity)
         {

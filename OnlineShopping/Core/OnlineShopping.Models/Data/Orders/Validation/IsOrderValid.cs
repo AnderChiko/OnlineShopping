@@ -16,7 +16,7 @@ namespace OnlineShopping.Models.Data.Orders.Validation
     {
         public IsOrderValid()
         {
-            Add("UserIdIsNotNullOrZero", new Rule<Order>(new UserIdIsNullOrEmpty(), "UserId field is missing"));           
+            Add("UserIdIsNotNullOrZero", new Rule<Order>(new UserIdIsNullOrZero(), "UserId field is missing"));           
         }
     }
 }
