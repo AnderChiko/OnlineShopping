@@ -13,8 +13,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
 import { NgbModule, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
-import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; // this includes the core NgIdleModule but includes keepalive providers for easy wireup
-import { MomentModule } from 'angular2-moment'; // optional, provides moment-style pipes for date formatting
 
 //components
 import { AppComponent } from './app.component';
@@ -45,8 +43,6 @@ import { ViewOrderCartComponent } from './feature/orders/components/view-order-c
     FormsModule,
     NgbModule,
     ModalModule.forRoot(),
-    NgIdleKeepaliveModule.forRoot(),
-    MomentModule,
     HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
