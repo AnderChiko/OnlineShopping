@@ -45,7 +45,7 @@ namespace OnlineShopping.Core
 
         public static IServiceCollection AddCoreConfigurationOptions(this IServiceCollection services, IConfiguration configuration)
         {
-           // services.Configure<EmailServerOptionsList>(configuration.GetSection(ConfigSections.EmailServerOptionsList));
+            services.Configure<EmailServerOptionsList>(configuration.GetSection(ConfigSections.EmailServerOptionsList));
             services.AddDbContext<ApplicationDbContext>(o =>
             {
                 o.UseSqlServer(configuration.GetConnectionString("OnlineShopping"));
