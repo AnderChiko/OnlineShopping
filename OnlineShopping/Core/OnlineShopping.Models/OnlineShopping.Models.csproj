@@ -5,8 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="validation\RuleValidator.cs" />
+    <Compile Remove="validation\ValidationAttribute.cs" />
+    <Compile Remove="validation\ValidationResult.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="DomainValidation" Version="1.0.0" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.11.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="validation\" />
   </ItemGroup>
 
 </Project>

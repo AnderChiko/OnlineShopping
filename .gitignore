@@ -20,3 +20,6 @@
 /OnlineShopping/Hosts/UI/OnlineShopping.rar
 /OnlineShopping/Hosts/UI/OnlineShopping/.vs
 /OnlineShopping/Hosts/UI/OnlineShopping/.vscode
+/OnlineShopping/Core/OnlineShopping.Models/validation/RuleValidator.cs
+/OnlineShopping/Core/OnlineShopping.Models/validation/ValidationAttribute.cs
+/OnlineShopping/Core/OnlineShopping.Models/validation/ValidationResult.cs
