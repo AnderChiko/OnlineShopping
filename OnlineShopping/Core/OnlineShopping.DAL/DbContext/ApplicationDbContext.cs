@@ -26,7 +26,7 @@ namespace OnlineShopping.DAL
                     Id = 1,
                     Name = "Test product 1",
                     Description = "Test product 1",
-                    DateCreated = DateTime.Now,
+                    DateTimeCreated = DateTime.Now,
                     IsActive = true,
                     IsDeleted = true,
                     ImageUrl = ""
@@ -36,7 +36,7 @@ namespace OnlineShopping.DAL
                      Id = 2,
                      Name = "Test product 2",
                      Description = "Test product 2",
-                     DateCreated = DateTime.Now,
+                     DateTimeCreated = DateTime.Now,
                      IsActive = true,
                      IsDeleted = true,
                      ImageUrl = ""
@@ -46,7 +46,7 @@ namespace OnlineShopping.DAL
                       Id = 3,
                       Name = "Test product 3",
                       Description = "Test product 3",
-                      DateCreated = DateTime.Now,
+                      DateTimeCreated = DateTime.Now,
                       IsActive = true,
                       IsDeleted = true,
                       ImageUrl = ""
@@ -63,26 +63,19 @@ namespace OnlineShopping.DAL
 
             base.OnModelCreating(modelBuilder);
         }
+                     
 
+        //TO DO : 
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer(
-                @"Data Source=HSTCPT-ANDERSON;Initial Catalog=test123;Integrated Security=True");
-            }           
-        }
+        public DbSet<User> User { get; set; } 
+        
+        public DbSet<Product> Product { get; set; }     
 
+        public DbSet<Order> Order { get; set; }
+        public DbSet<OrderItems> OrderItem { get; set; }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<UserToken> UserTokens { get; set; }
-
-        public DbSet<Product> Products { get; set; }
-        public DbSet<ProductPrice> ProductPrices { get; set; }
-
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderItems> OrderItems { get; set; }
+        //public DbSet<ProductPrice> ProductPrice { get; set; }
+        //public DbSet<UserToken> UserToken { get; set; }
 
     }
 }

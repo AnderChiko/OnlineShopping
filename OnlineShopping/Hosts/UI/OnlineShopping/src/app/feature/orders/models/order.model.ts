@@ -12,7 +12,6 @@ export interface IOrder {
 export class Order implements IOrder {
   id?: number;
   userId?: number;
-  dateCreated?: Date;
   orderItems?: OrderItems[] | undefined;
   user?: User;
 

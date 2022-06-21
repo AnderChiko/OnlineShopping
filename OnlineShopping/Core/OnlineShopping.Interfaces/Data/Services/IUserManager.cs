@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace OnlineShopping.Interfaces.Data
 {
     public interface IUserManager : ICrudManager<User,  long> 
-    {        
+    {
+        Task<User> Login(string emailaddress, string password);
     }
 }

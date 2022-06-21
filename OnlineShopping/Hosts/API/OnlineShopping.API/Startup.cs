@@ -31,8 +31,10 @@ namespace OnlineShopping.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddServices();
+            services.AddOptions();
+            services.AddOptions(Configuration);
             services.AddControllers();
-            //ConfigureCorsServices(services);
+            ConfigureCorsServices(services);
 
             services.AddControllers().AddNewtonsoftJson(options =>
             {
@@ -109,22 +111,13 @@ namespace OnlineShopping.API
         private void ConfigureCorsServices(IServiceCollection services)
         {
             var origins = Configuration.GetSection("AllowedOrigins").Value.Split(',');
-
-            string[] corsHeaders =
-            {
-                ApplicationHeaders.ApiVersion,
-                "content-disposition",
-                "content-length",
-                "content-type"
-            };
-
+                       
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigin",
                     builder => builder.WithOrigins(origins)
-                        .AllowCredentials()
-                        .AllowAnyHeader()
-                        .WithExposedHeaders(corsHeaders)
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()                        
                         .AllowAnyMethod());
             });
         }

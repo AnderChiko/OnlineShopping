@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OnlineShopping.Core;
 using OnlineShopping.DAL;
-using System.Configuration;
 
-namespace OnlineShopping.API
+namespace OnlineShopping.Core
 {
     public static class IoC
     {
@@ -25,17 +22,18 @@ namespace OnlineShopping.API
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection AddServices(this IServiceCollection services)
+        public static IServiceCollection AddDALServices(this IServiceCollection services)
         {
-            services.AddCore();
-            services.AddDALServices();
+            services.AddTransient<ApplicationDbContext, ApplicationDbContext>();          
             return services;
         }
 
-        public static IServiceCollection AddOptions(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddCoreConfigurationOptions(configuration);
-            services.AddDALConfigurationOptions(configuration);
+        public static IServiceCollection AddDALConfigurationOptions(this IServiceCollection services, IConfiguration configuration)
+        {           
+            services.AddDbContext<ApplicationDbContext>(o =>
+            {
+                o.UseSqlServer(configuration.GetConnectionString("OnlineShopping"));
+            });
             return services;
         }
     }

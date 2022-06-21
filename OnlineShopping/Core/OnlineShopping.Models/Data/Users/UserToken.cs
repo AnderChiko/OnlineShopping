@@ -8,13 +8,9 @@ using System.Threading.Tasks;
 
 namespace OnlineShopping.Models.Data.Users
 {
-    public class UserToken //: IdKeyBase
+    public class UserToken : IdKeyBase
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-
-        //[ForeignKey("User")]
+                       
         public long UserId{ get; set; }
         public string Token { get; set; }
         public DateTime? TokenExpireTime { get; set; }

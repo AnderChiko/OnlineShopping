@@ -1,5 +1,6 @@
 ﻿using OnlineShopping.Interfaces.Data;
 using OnlineShopping.Interfaces.Security;
+using OnlineShopping.Models.Enums;
 using OnlineShopping.Models.Http;
 using OnlineShopping.Models.Security;
 using System;
@@ -20,18 +21,18 @@ namespace OnlineShopping.Core.Security
             this._userManager = userManager;
         }
 
-        public Task<ApiResponse<LoginResult>> Login(Login login)
+        public async Task<LoginResult> Login(Login login)
         {
-            //encrypt incoming password
-            var encryptedPassword = _encryptionManager.EncryptPassword(login.Password);
+            var response = new LoginResult();
+            var user = await _userManager.Login(login.EmailAddress, login.Password);
 
-            // update the model password 
-            login.Password = encryptedPassword;
-
-            // call data access with encrypted password
-            //var user = this._userManager.Get()
-
-            throw new NotImplementedException();
+            // to do : add more detailed response with tokens 
+            if (user != null)
+            {
+                response.Token = Guid.NewGuid().ToString("N");
+                response.ExpireDateTime = DateTime.Now.AddMinutes(5);
+            }
+            return response;
         }
     }
 }

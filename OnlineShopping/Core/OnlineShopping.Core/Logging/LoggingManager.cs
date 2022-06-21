@@ -13,8 +13,8 @@ namespace OnlineShopping.Core.Logging
     public class LoggingManager<T> : ILoggingManager<T>
     {
         private readonly ILogger _logger;
-        private readonly string apiVersion;
-        private readonly string module;
+      //  private readonly string apiVersion;
+      //  private readonly string module;
 
         public LoggingManager(ILogger<T> logger)
         {
@@ -24,8 +24,8 @@ namespace OnlineShopping.Core.Logging
 
       
         public async Task LogError(Exception exception,
-            string label, string message, Dictionary<string, string>? properties = null,
-            Dictionary<string, double>? metrics = null,
+            string label, string message, Dictionary<string, string> properties = null,
+            Dictionary<string, double> metrics = null,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string memberFilePath = "",
             [CallerLineNumber] int memberLineNumber = 0,
@@ -54,7 +54,7 @@ namespace OnlineShopping.Core.Logging
         }
 
         public async Task LogInformation(string label, string message,
-            Dictionary<string, string>? properties = null, Dictionary<string, double>? metrics = null,
+            Dictionary<string, string> properties = null, Dictionary<string, double> metrics = null,
             [CallerMemberName] string memberName = "",
             [CallerFilePath] string memberFilePath = "",
             [CallerLineNumber] int memberLineNumber = 0,
@@ -70,8 +70,8 @@ namespace OnlineShopping.Core.Logging
 
         // TODO: Adding Types , can we do it with dependency injection on the class.
         // private async Task Log(LogLevel logLevel,
-        private async Task Log(LogLevel logLevel,string label, string message, Exception? exception = null,
-            Dictionary<string, string>? properties = null, Dictionary<string, double>? metrics = null,
+        private async Task Log(LogLevel logLevel,string label, string message, Exception exception = null,
+            Dictionary<string, string> properties = null, Dictionary<string, double> metrics = null,
             string memberName = "",
             string memberFilePath = "",
             int memberLineNumber = 0,
@@ -100,7 +100,7 @@ namespace OnlineShopping.Core.Logging
             catch (Exception ex)
             {
                 //if (exception != null)
-                //    Console.WriteLine($"Error writing to logs. Logger. Exception:{ex.ToString()}");
+                    Console.WriteLine($"Error writing to logs. Logger. Exception:{ex.ToString()}");
                 //else
                 //    throw;
             }

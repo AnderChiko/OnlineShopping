@@ -14,13 +14,9 @@ namespace OnlineShopping.Models.Data
 
         [ForeignKey("Product")]
         public long ProductId { get; set; }
+
         public decimal UnitPrice { get; set; }
 
-        public int Quantity { get; set; }       
-               
-        public double Vat { get; set; }
-
-        public double Price { get; set; }
-
+        public int Quantity { get; set; } 
     }
 }

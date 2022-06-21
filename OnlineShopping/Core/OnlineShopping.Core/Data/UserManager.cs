@@ -27,19 +27,19 @@ namespace OnlineShopping.Core.Data
         }
                
         public async override Task<User> Create(User user)
-        {
-            //user.Salt = _encryptionManager.GetRandomSalt();
-            //var encryptedPassword = _encryptionManager.HashPassword(user.Salt, user.Password);
-            //user.Password = encryptedPassword;
+        {           
+                // to do: encrypt db password field
+                // user.Password = _encryptionManager.EncryptPassword(user.Password);
+                return await base.Create(user);            
+        }
 
-            // encrypt db password field
-            user.Password = _encryptionManager.EncryptPassword(user.Password);
-
-            using (var dbContext = GetDbContext())
+        public async Task<User> Login(string emailaddress, string password)
+        {           
+           // to do: decryptencrytedPassword = _encryptionManager.EncryptPassword(password);
+            using (var dbcontext =  GetDbContext())
             {
-                dbContext.Entry(user).State = EntityState.Added;
-                await dbContext.SaveChangesAsync();
-                return user;
+                return await dbcontext.User.FirstOrDefaultAsync(x => x.EmailAddress == emailaddress && x.Password == password);
+
             }
         }
     }

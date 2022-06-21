@@ -10,6 +10,6 @@ namespace OnlineShopping.Interfaces.Security
 {
     public interface ISecurityManager
     {
-        Task<ApiResponse<LoginResult>> Login(Login login);
+        Task<LoginResult> Login(Login login);
     }
 }

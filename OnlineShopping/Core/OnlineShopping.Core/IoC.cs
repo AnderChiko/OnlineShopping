@@ -3,10 +3,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OnlineShopping.Core.Communication;
 using OnlineShopping.Core.Data;
+using OnlineShopping.Core.Interfaces.Logging;
+using OnlineShopping.Core.Logging;
 using OnlineShopping.Core.Security;
 using OnlineShopping.DAL;
 using OnlineShopping.Interfaces.Communication;
 using OnlineShopping.Interfaces.Data;
+using OnlineShopping.Interfaces.Data.Services;
 using OnlineShopping.Interfaces.Security;
 using OnlineShopping.Interfaces.Services;
 using OnlineShopping.Models.Configuration;
@@ -40,16 +43,14 @@ namespace OnlineShopping.Core
             services.AddScoped<IProductManager, ProductManager>();
             services.AddScoped<IEncryptionManager, EncryptionManager>();
             services.AddScoped<IEmailSender, EmailSender>();
+            services.AddScoped<IOrderItemsManager, OrderItemsManager>();
+            services.AddScoped(typeof(ILoggingManager<>), typeof(LoggingManager<>));
             return services;
         }
 
         public static IServiceCollection AddCoreConfigurationOptions(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<EmailServerOptionsList>(configuration.GetSection(ConfigSections.EmailServerOptionsList));
-            services.AddDbContext<ApplicationDbContext>(o =>
-            {
-                o.UseSqlServer(configuration.GetConnectionString("OnlineShopping"));
-            });
             return services;
         }
     }

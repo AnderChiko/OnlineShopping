@@ -6,21 +6,23 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace OnlineShopping.Models.Data
 {
-    public class User 
+    
+    public class User  
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity),JsonIgnore]
+        public long Id { get; set; }
+
+        [Required]
         public string EmailAddress { get; set; }
-
+              
         public string Password { get; set; }
+        
         public string Name  { get; set; }
-        public string Salt { get; set; }
-
-        public virtual  ICollection<UserToken> UserTokens { get; set; }  
+        
     }
 }

@@ -31,10 +31,10 @@ namespace OnlineShopping.API.Controllers
             {
                 var result = await _securityManager.Login(login);
 
-                if (result.Status != Status.Success)
+                if (result.Token == null)
                     return Unauthorized(result);
                 else
-                    return result;
+                    return new ApiResponse<LoginResult>(HttpStatusCode.Accepted,result);
             }
             catch (Exception ex)
             {  

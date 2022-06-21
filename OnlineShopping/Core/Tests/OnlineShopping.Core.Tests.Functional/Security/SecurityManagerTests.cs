@@ -35,14 +35,14 @@ namespace OnlineShopping.Core.Tests.Functional.Security
         public void Login()
         {
 
-            var result = RunInScope<ISecurityManager, ApiResponse<LoginResult>>(
+            var result = RunInScope<ISecurityManager, LoginResult>(
                     (ISecurityManager instance, IServiceScope scope) =>
                     {
                         var results = instance.Login(testLogin).Result;
                         return results;
                     });
-            Assert.NotNull(result.ResponseObject);
-            Assert.Equal(result.Status.ToString(), Status.Success.ToString());
+            Assert.NotNull(result.Token);
+            //Assert.Equal(result.ExpireDateTime, Status.Success.ToString());
         }
 
 

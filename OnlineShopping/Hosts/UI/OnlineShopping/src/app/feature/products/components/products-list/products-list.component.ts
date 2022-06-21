@@ -55,6 +55,8 @@ export class ProductsListComponent implements OnInit {
     this.productService.getProducts().subscribe(
       (response) => {
 
+        console.log(response);
+
         if (response == null && !response.isSuccessStatusCode) {
           this.toastr.error(response.responseMessage, "Error");
           this.loading = false;
@@ -66,7 +68,7 @@ export class ProductsListComponent implements OnInit {
       error => { },
       () => {
 
-        this.toastr.error("internal server error.", "Error");
+        //  this.toastr.error("internal server error.", "Error");
         this.loading = false;
         return;
 

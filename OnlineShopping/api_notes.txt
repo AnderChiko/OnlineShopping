@@ -1,0 +1,11 @@
+
+
+1 . run db script ..\Core\OnlineShopping.DAL\dbScript\[OnlineShopping].sql to create tables and seed 3 products
+
+2 .  update the in appsettings under this section => connection string  "ConnectionStrings": {
+    "OnlineShopping": "Data Source=HSTCPT-ANDERSON\\MSSQLSERVER2016;Initial Catalog=OnlineShopping;User ID=sa;Password=ander@211;"
+     },
+
+3 . default to api app
+
+4 . project will launch swagger definations

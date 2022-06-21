@@ -48,6 +48,8 @@ export class ViewOrderCartComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
 
+    console.log('this.userOrder', this.userOrder)
+
     this.orderService.placeOrder(this.userOrder).subscribe(
       (response) => {
 

@@ -1,0 +1,11 @@
+1 open foler .\Hosts\UI\OnlineShopping with vs studio
+
+2 open new terminal
+
+3 then run npm install
+
+4  then run => ng build
+
+5 or run => ng sarve --o
+
+6 the project will open on port http://localhost:4200/

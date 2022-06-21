@@ -32,8 +32,7 @@ namespace OnlineShopping.API.Controllers
             try
             {
                 var result = await _orderManager.Create(order);
-                return new ApiResponse<Order>(HttpStatusCode.Created,result); ;
-
+                return new ApiResponse<Order>(HttpStatusCode.Created,result); 
             }
             catch (Exception ex)
             {
