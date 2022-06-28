@@ -23,9 +23,10 @@ namespace OnlineShopping.Testing
             _configuration = configBuilder.Build();
 
             this._services = new ServiceCollection();
-            _services.AddSingleton<IConfiguration>((serviceProvider) => _configuration);           
+            _services.AddSingleton<IConfiguration>((serviceProvider) => _configuration); 
+            
             _services.AddCoreConfigurationOptions(_configuration);
-            _services.AddCore();
+            _services.AddDALConfigurationOptions(_configuration);
             ReBuildServices();
         }
 

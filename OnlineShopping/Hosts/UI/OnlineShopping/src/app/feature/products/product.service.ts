@@ -15,7 +15,7 @@ export class ProductService {
   ) { }
 
   getProducts(): Observable<ProductListResponse> {
-    return this.http.get<ProductListResponse>(`${environment.apiBaseUrl}/api/product/get`)
+    return this.http.get<ProductListResponse>(`${environment.apiBaseUrl}api/product/get`)
       .pipe(map((prod) => {
         return prod;
       }));

@@ -23,12 +23,12 @@ namespace OnlineShopping.Core.Tests.Functional.Security
         };
 
 
-        public SecurityManagerTests() 
-            : base()
+        public SecurityManagerTests()
         {
+            _services.AddCore();
+            _services.AddDALServices();
 
-
-
+            ReBuildServices();
         }
 
         [Fact]

@@ -20,6 +20,8 @@ namespace OnlineShopping.API
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -52,7 +54,7 @@ namespace OnlineShopping.API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "OnlineShopping.API", Version = "v1" });
-                             
+
                 // To Enable authorization using Swagger (JWT)  
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
@@ -111,14 +113,14 @@ namespace OnlineShopping.API
         private void ConfigureCorsServices(IServiceCollection services)
         {
             var origins = Configuration.GetSection("AllowedOrigins").Value.Split(',');
-                       
+
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins(origins)
-                        .AllowAnyOrigin()
-                        .AllowAnyHeader()                        
-                        .AllowAnyMethod());
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  policy =>
+                                  {
+                                      policy.WithOrigins(origins);
+                                  });
             });
         }
 

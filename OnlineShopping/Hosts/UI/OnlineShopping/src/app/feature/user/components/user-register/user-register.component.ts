@@ -39,8 +39,8 @@ export class UserRegisterComponent implements OnInit, OnDestroy {
   public createForm() {
     this.UserRegisterForm = this._formBuilder.group({
       emailaddress: ['', Validators.required],
-      password: ['', Validators.required, MustMatch],
-      confirmPassword: ['', Validators.required, MustMatch],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
     })
   }
 

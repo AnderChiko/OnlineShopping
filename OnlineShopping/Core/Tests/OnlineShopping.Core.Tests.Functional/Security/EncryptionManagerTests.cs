@@ -9,10 +9,12 @@ namespace OnlineShopping.Core.Tests.Functional.Security
 {
     public class EncryptionManagerTests :  TestHarnessBase
     {
-        public EncryptionManagerTests()
-            : base()
+        public EncryptionManagerTests()            
         {
+            _services.AddCore();
+            _services.AddDALServices();
 
+            ReBuildServices();
         }
 
 

@@ -5,6 +5,7 @@ using OnlineShopping.Interfaces.Data.Services;
 using OnlineShopping.Interfaces.Services;
 using OnlineShopping.Models.Data;
 using OnlineShopping.Models.Data.Orders;
+using OnlineShopping.Models.Data.Orders.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,12 +27,18 @@ namespace OnlineShopping.Core.Data
 
         public async override Task<Order> Create(Order order)
         {
+            // do validation check
+            var validation = new IsOrderValid().Validate(order);
+            if (!validation.IsValid)
+                throw new Exception(validation.Message);
+
             // create order
-           var insertedOrder =  await base.Create(order);
+            var insertedOrder =  await base.Create(order);
 
             // update orderId with returned id
             order.OderItems.ForEach(x => x.OrderId = insertedOrder.Id);
 
+            // add range orderitems
             var insertedOrderItems = await _orderItemsManager.Create(order.OderItems);
 
             order.OderItems = insertedOrderItems;

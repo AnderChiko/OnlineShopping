@@ -14,7 +14,7 @@ namespace OnlineShopping.Models.Data
         public long UserId { get; set; }
 
         [JsonIgnore]
-        public DateTime DateCreated { get; set; } = DateTime.Now;// default date to today
+        public DateTime DateTimeCreated { get; set; } = DateTime.Now;// default date to today
 
         public List<OrderItems> OderItems { get; set; }
 

@@ -72,7 +72,7 @@ namespace OnlineShopping.DAL
         public DbSet<Product> Product { get; set; }     
 
         public DbSet<Order> Order { get; set; }
-        public DbSet<OrderItems> OrderItem { get; set; }
+        public DbSet<OrderItems> OrdersItem { get; set; }
 
         //public DbSet<ProductPrice> ProductPrice { get; set; }
         //public DbSet<UserToken> UserToken { get; set; }
