@@ -38,7 +38,7 @@ export class UserRegisterComponent implements OnInit, OnDestroy {
 
   public createForm() {
     this.UserRegisterForm = this._formBuilder.group({
-      emailaddress: ['', [Validators.required, Validators.email]],
+      emailAddress: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
     },
@@ -59,7 +59,7 @@ export class UserRegisterComponent implements OnInit, OnDestroy {
 
     this.loading = true;
 
-    let objPost = new User(this.f.emailaddress.value, this.f.password.value);
+    let objPost = new User(this.f.emailAddress.value, this.f.password.value);
 
     this.userService.register(objPost).subscribe(
       (response) => {

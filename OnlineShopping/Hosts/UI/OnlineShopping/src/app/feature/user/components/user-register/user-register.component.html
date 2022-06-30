@@ -9,11 +9,11 @@
           <div class="mx-4 my-2">
             <div class="form-group">
               <label>Email</label>
-              <input type="text" formControlName="emailaddress" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f.emailaddress.errors }" />
-              <div *ngIf="submitted && f.emailaddress.errors" class="invalid-feedback">
-                <div *ngIf="f.emailaddress.errors.required">Email is required</div>
-                <div *ngIf="f.emailaddress.errors.email">Email must be a valid email address</div>
+              <input type="text" formControlName="emailAddress" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.emailAddress.errors }" />
+              <div *ngIf="submitted && f.emailAddress.errors" class="invalid-feedback">
+                <div *ngIf="f.emailAddress.errors.required">Email is required</div>
+                <div *ngIf="f.emailAddress.errors.email">Email must be a valid email address</div>
               </div>
             </div>
             <div class="form-group">
