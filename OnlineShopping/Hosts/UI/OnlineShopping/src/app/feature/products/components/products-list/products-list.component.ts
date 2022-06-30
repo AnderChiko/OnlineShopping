@@ -29,17 +29,16 @@ export class ProductsListComponent implements OnInit {
   public pageSize: number = 5;
 
   prodLists: Product[] = [
-    { id: 1, name: 'Test product 1', description: 'Test product description 1', dateCreated: null, isActive: true, isDeleted: false, imageUrl: '', price: 12.00 }
-    , { id: 2, name: 'Test product 2', description: 'Test product description 2', dateCreated: null, isActive: true, isDeleted: false, imageUrl: '', price: 25.00 }
-    , { id: 3, name: 'Test product 3', description: 'Test product description 3', dateCreated: null, isActive: true, isDeleted: false, imageUrl: '', price: 75.00 }
-    , { id: 4, name: 'Test product 4', description: 'Test product description 4', dateCreated: null, isActive: true, isDeleted: false, imageUrl: '', price: 100.00 }
+    { id: 1, name: 'Apples', description: 'Test product description 1', dateCreated: null, isActive: true, isDeleted: false, imageUrl: '/assets/products/apple.jpg', price: 12.00 }
+    , { id: 2, name: 'Bananas', description: 'Test product description 2', dateCreated: null, isActive: true, isDeleted: false, imageUrl: '/assets/products/banana.jpg', price: 25.00 }
+    , { id: 3, name: 'Mangos', description: 'Test product description 3', dateCreated: null, isActive: true, isDeleted: false, imageUrl: '/assets/products/mango1.jpg', price: 75.00 }
+    //, { id: 4, name: 'Peaches', description: 'Test product description 4', dateCreated: null, isActive: true, isDeleted: false, imageUrl: '/assets/products/peaches.jpg', price: 100.00 }
   ]
 
   constructor(private toastr: ToastrService
     , private productService: ProductService
     , private cartService: CartService
   ) {
-
   }
 
   ngOnInit() {

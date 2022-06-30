@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { multicast } from 'rxjs/operators';
 import { MustMatch } from 'src/app/Shared/custom-validators';
 import { LocalStorageService } from 'src/app/Shared/services/local-storage.service';
 import { User } from '../../models/user';
@@ -27,21 +28,23 @@ export class UserRegisterComponent implements OnInit, OnDestroy {
     , private routerService: Router
     , private localStorageService: LocalStorageService
 
-  ) {
-    this.createForm();
-  }
+  ) { }
 
   ngOnInit() {
+    this.createForm();
   }
 
   get formControls() { return this.UserRegisterForm.controls; }
 
   public createForm() {
     this.UserRegisterForm = this._formBuilder.group({
-      emailaddress: ['', Validators.required],
-      password: ['', Validators.required],
+      emailaddress: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
-    })
+    },
+      {
+        validator: MustMatch('password', 'confirmPassword')
+      });
   }
 
   ngOnDestroy() {

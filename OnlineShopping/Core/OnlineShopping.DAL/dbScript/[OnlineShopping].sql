@@ -63,13 +63,13 @@ GO
 
 INSERT INTO [dbo].[Product]([Name] ,[Description],[ImageUrl] ,[Price],[IsActive],[IsDeleted],[DateTimeCreated])
      VALUES
-           ('product 1','product 1 description','http//','25.10',1,0,getdate());
+           ('Apples','product 1 description','/assets/products/apple.jpg','25.10',1,0,getdate());
 go
 		   INSERT INTO [dbo].[Product]([Name] ,[Description],[ImageUrl] ,[Price],[IsActive],[IsDeleted],[DateTimeCreated])
      VALUES
-           ('product 2','product 2 description','http//','35.60',1,0,getdate());
+           ('Bananas','product 2 description','/assets/products/banana.jpg','35.60',1,0,getdate());
 go
 		   INSERT INTO [dbo].[Product]([Name] ,[Description],[ImageUrl] ,[Price],[IsActive],[IsDeleted],[DateTimeCreated])
      VALUES
-           ('product 3','product 3 description','http//','55.90',1,0,getdate());
+           ('Mangos','product 3 description','/assets/products/mango1.jpg','55.90',1,0,getdate());
 GO

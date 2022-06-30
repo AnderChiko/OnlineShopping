@@ -3,49 +3,25 @@
     <h3 class="text-light">Products List</h3>
   </div>
   <div class="card-body">
-    <div class="mx-4 my-2">
-      <div class="form-row border rounded table-responsive-sm">
-        <table class="table table-borderless table-hover">
-          <tbody>
-            <tr *ngIf="productList.length == 0">
-              <td colspan="3">No data to display</td>
-            </tr>
-            <tr class="border-bottom"
-              *ngFor="let product of productList | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
-              <td><img src={{product.imageUrl}} /></td>
-              <td>
-                <div class="row">
-                  <div class="col-md-12">
-                    <h2>{{product.name}}</h2>
-                  </div>
-                  <div class="col-md-12">
-                    <h4>{{product.description}}</h4>
-                  </div>
-                  <div class="col-md-12">
-                    <h6>R {{product.price | number : '1.2-2'}}</h6>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <input type="button" name="addToCart" value="add to cart" (click)="addToCart(product,1)">
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <ngb-pagination class="pl-1" [collectionSize]="productList.length" [(page)]="page" [maxSize]="5"
-          *ngIf="productList.length > pageSize" [pageSize]="pageSize" [rotate]="true" [ellipses]="false"
-          [boundaryLinks]="true"></ngb-pagination>
+    <div class="form-row p-4">
+
+      <div class="cart" *ngFor="let product of productList; index as i">
+        <img src={{product.imageUrl}} alt={{product.imageUrl}} style="width:100%; height: 180px;">
+        <h1>{{product.name}}</h1>
+        <p class="price">R {{product.price | number : '1.2-2'}}</p>
+        <p>{{product.description}}</p>
+        <p><button (click)="addToCart(product,1)">Add to Cart</button> </p>
       </div>
-      <div class="form-row">
-        <div class="col text-right">
-          <button mat-stroked-button [routerLink]="'/viewordercart'" class="btn btn-success btn-fixed ml-2">view
-            cart</button>
-        </div>
+    </div>
+    <div class="form-row">
+      <div class="col text-right">
+        <button mat-stroked-button [routerLink]="'/viewordercart'" class="btn btn-success btn-fixed ml-2">view
+          cart</button>
       </div>
+
     </div>
   </div>
 </div>
-
 
 <div class="my-container">
   <ng-template #customLoadingTemplate>

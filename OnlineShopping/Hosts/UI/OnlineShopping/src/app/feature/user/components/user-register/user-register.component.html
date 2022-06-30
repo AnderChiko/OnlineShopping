@@ -8,50 +8,41 @@
         <div class="card-body">
           <div class="mx-4 my-2">
             <div class="form-group">
-              <label for="emailaddress">Emailaddress</label>
-              <input type="email" formControlName="emailaddress" class="form-control form-control-sm"
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+              <label>Email</label>
+              <input type="text" formControlName="emailaddress" class="form-control"
                 [ngClass]="{ 'is-invalid': submitted && f.emailaddress.errors }" />
               <div *ngIf="submitted && f.emailaddress.errors" class="invalid-feedback">
-
-                <div *ngIf="f.emailaddress.errors && (f.emailaddress.dirty && f.emailaddress.touched)"
-                  class="alert-email alert-danger-email"><br>
-
-                  <div [hidden]="!f.emailaddress.errors['pattern']">
-                    Please input a valid email.
-                  </div>
-                  <div [hidden]="!f.emailaddress.errors['required']">
-                    Email is required
-                  </div>
-                </div>
+                <div *ngIf="f.emailaddress.errors.required">Email is required</div>
+                <div *ngIf="f.emailaddress.errors.email">Email must be a valid email address</div>
               </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" formControlName="password" class="form-control form-control-sm"
-                  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                  <div *ngIf="f.password.errors.required">Password is required</div>
-                </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" formControlName="password" class="form-control form-control-sm"
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
               </div>
-              <div class="form-group">
-                <label for="confirmPassword">Confirm Password</label>
-                <input type="password" formControlName="confirmPassword" class="form-control form-control-sm"
-                  [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
-                <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
-                  <div *ngIf="f.password.errors.required">confirm Password is required</div>
-                </div>
-                <div *ngIf="f.confirmPassword.value != f.password.value && f.confirmPassword.value != ''"
-                  class="invalid-feedback">Passwords must match</div>
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword">Confirm Password</label>
+              <input type="password" formControlName="confirmPassword" class="form-control form-control-sm"
+                [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+              <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
               </div>
-              <div class="form-row">
-                <div class="col text-right">
-                  <button mat-stroked-button class="btn btn-secondary btn-fixed">Register</button>
-                  <button mat-stroked-button [routerLink]="'/'" class="btn btn-danger btn-fixed ml-2">Cancel</button>
-                </div>
+            </div>
+            <div class="form-row">
+              <div class="col text-right">
+                <button mat-stroked-button class="btn btn-secondary btn-fixed">Register</button>
+                <button mat-stroked-button [routerLink]="'/'" class="btn btn-danger btn-fixed ml-2">Cancel</button>
               </div>
             </div>
           </div>
         </div>
+
       </form>
     </div>
   </div>
